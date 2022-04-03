@@ -9,6 +9,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       return;
     }
     props.onAddTodo(enteredText);
+    todoTextInputRef.current!.value = ""; // ! means we're certain that value is not null or undefined
   };
   return (
     <form onSubmit={submitHandler}>
