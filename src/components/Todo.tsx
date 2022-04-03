@@ -2,14 +2,10 @@ import React from "react";
 
 const Todo: React.FC<{
   text: string;
-  id: string;
-  deleteHandler: (id: string) => void;
+  deleteHandler: () => void;
 }> = (props) => {
   return (
-    <li
-      style={{ cursor: "pointer" }}
-      onClick={() => props.deleteHandler(props.id)}
-    >
+    <li style={{ cursor: "pointer" }} onClick={props.deleteHandler}>
       {props.text}
     </li>
   );

@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+import { TodosContext } from "../store/todos-context";
 
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo: React.FC = (props) => {
+  const todosCTX = useContext(TodosContext);
   const todoTextInputRef = useRef<HTMLInputElement>(null);
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -8,7 +10,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
     if (enteredText.trim().length === 0) {
       return;
     }
-    props.onAddTodo(enteredText);
+    todosCTX.addTodo(enteredText);
     todoTextInputRef.current!.value = ""; // ! means we're certain that value is not null or undefined
   };
   return (
